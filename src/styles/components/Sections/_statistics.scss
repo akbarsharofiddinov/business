@@ -1,0 +1,44 @@
+.section-statistics {
+  margin: 40px 0;
+  font-family: "Raleway", sans-serif;
+
+  .top {
+    padding: 0 40px;
+
+    .title {
+      font-size: 32px;
+      font-weight: 500;
+      color: #787996;
+      margin: 60px 0;
+
+      span {
+        color: #000;
+      }
+    }
+  }
+
+  .statistic-boxes {
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .statistic-box {
+      width: 650px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      box-shadow: 4px 10px 15px rgba(0, 0, 0, 0.05);
+
+      p {
+        font-size: 20px;
+        color: #787996;
+        font-weight: 500;
+      }
+    }
+  }
+}

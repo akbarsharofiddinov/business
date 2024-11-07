@@ -1,0 +1,34 @@
+.section-gallery {
+  .swiper {
+    .swiper-slide {
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 248px;
+
+      transition: max-width 0.3s;
+
+      &:hover {
+        max-width: 382px !important;
+      }
+
+      img {
+        height: 330px;
+      }
+    }
+  }
+
+  .swiper-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+}

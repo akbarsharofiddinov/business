@@ -1,0 +1,36 @@
+@use "./common/defaults";
+
+// Components
+@use "./components/header";
+@use "./components/footer";
+@use "./components/Products/products";
+@use "./components/Products/product-item";
+
+// Sections
+@use "./components/Sections/banner";
+@use "./components/Sections/statistics";
+@use "./components/Sections/catalogs";
+@use "./components/Sections/comments";
+@use "./components/Sections/gallery";
+@use "./components/Sections/product-details";
+
+// UI
+@use "./UI/modal";
+
+.paths {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  a {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 100px;
+    font-size: 16px;
+
+    &:last-child {
+      color: #787996;
+    }
+  }
+}

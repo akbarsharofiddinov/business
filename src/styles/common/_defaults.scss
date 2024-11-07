@@ -1,0 +1,52 @@
+@use "./fonts";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f9fd;
+}
+
+button {
+  cursor: pointer !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin: 40px 0;
+
+  .title {
+    font-size: 36px;
+    font-weight: 500;
+  }
+}
