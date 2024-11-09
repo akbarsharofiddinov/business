@@ -38,13 +38,12 @@ const Recommendation: React.FC = () => {
   }, [categories.length]);
 
   return (
-    <section className="section-recommendaition">
+    <section className="section-recommendation">
       <div className="container">
         <div className="section-title">
           <h3 className="title">Tavsiya qilamiz</h3>
         </div>
         <Swiper
-          slidesPerView={"auto"}
           breakpoints={{
             540: {
               slidesPerView: 1,
