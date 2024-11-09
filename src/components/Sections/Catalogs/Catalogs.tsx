@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/store/hooks/hooks";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Catalogs: React.FC = () => {
   const categories = useAppSelector((state) => state.category.categories);
@@ -16,7 +17,8 @@ const Catalogs: React.FC = () => {
               {categories?.length
                 ? categories.map((category, index) => (
                     <div className="catalog" key={index}>
-                      <a href={`catalogs/${category.slug}`}></a>
+                      {/* <a href={`catalogs/${category.slug}`}></a> */}
+                      <Link to={`catalogs/${category.slug}`}></Link>
                       <img
                         src={`https://bizneskatalog.webclub.uz/images/categories/${category.photo}`}
                         alt=""
