@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useAppSelector } from "@/store/hooks/hooks";
@@ -7,6 +7,10 @@ const Catalogs: React.FC = () => {
   const { catalogSlug } = useParams();
 
   const categories = useAppSelector((state) => state.category.categories);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
