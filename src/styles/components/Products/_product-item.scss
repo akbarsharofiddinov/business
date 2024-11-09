@@ -1,7 +1,8 @@
 .product-item {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -16,6 +17,7 @@
   .body {
     display: flex;
     flex-direction: column;
+    width: 100% !important;
 
     gap: 5px;
     padding: 5px 15px 15px 15px;

@@ -1,8 +1,13 @@
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 335px));
-  justify-content: center;
   column-gap: 30px;
   row-gap: 45px;
   margin-top: 40px;
+}
+
+@media screen and (max-width: 480px) {
+  .products {
+    justify-content: center;
+  }
 }
