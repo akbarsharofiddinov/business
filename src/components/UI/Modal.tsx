@@ -17,12 +17,17 @@ const Modal: React.FC<IProps> = ({ modal, children, setModal }) => {
 
   const bind = useDrag(
     ({ last, movement: [, my], memo = y.get() }) => {
+      // Calculate the new position, clamped between 0 (top limit) and the screen height
+      const newY = Math.max(0, memo + my); // Prevents dragging above the initial position
+
       if (last) {
+        // Close the sheet if dragged down far enough
         if (my > 100) setModal(false);
-        else openSheet();
+        else api.start({ y: 0 }); // Snap back to the top limit if not closed
       } else {
-        api.start({ y: memo + my });
+        api.start({ y: newY }); // Update position within the allowed range
       }
+
       return memo;
     },
     { from: () => [0, y.get()] }
@@ -42,8 +47,7 @@ const Modal: React.FC<IProps> = ({ modal, children, setModal }) => {
           bottom: 0,
           left: 0,
           width: "100%",
-          height: "60vh",
-          background: "white",
+          height: "100vh",
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           y,

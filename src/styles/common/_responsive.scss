@@ -238,6 +238,11 @@
   }
 
   .section-product-details {
+    .section-title {
+      .title {
+        font-size: 20px !important;
+      }
+    }
     .product-info_box {
       .info {
         & > p {
@@ -262,7 +267,7 @@
 
         .order-btn {
           padding: 12px !important;
-          font-size: 16px !important;
+          font-size: 14px !important;
         }
       }
     }
@@ -281,6 +286,51 @@
       padding: 6px !important;
       min-width: 100px !important;
       font-size: 12px !important;
+    }
+  }
+
+  .modal {
+    .modal-inner {
+      .title {
+        font-size: 18px !important;
+      }
+
+      input {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      button {
+        padding: 12px 24px !important ;
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .header-bar_btn {
+    font-size: 18px !important;
+  }
+
+  header {
+    .logo {
+      img {
+        height: 30px !important;
+      }
+    }
+  }
+
+  footer {
+    .contact {
+      input,
+      textarea {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      button {
+        padding: 12px 24px !important;
+        font-size: 14px !important;
+      }
     }
   }
 }
