@@ -17,7 +17,6 @@ const Catalogs: React.FC = () => {
               {categories?.length
                 ? categories.map((category, index) => (
                     <div className="catalog" key={index}>
-                      {/* <a href={`catalogs/${category.slug}`}></a> */}
                       <Link to={`catalogs/${category.slug}`}></Link>
                       <img
                         src={`https://bizneskatalog.webclub.uz/images/categories/${category.photo}`}

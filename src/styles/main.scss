@@ -1,5 +1,7 @@
 @use "./common/defaults";
 
+@use "./common/responsive";
+
 // Components
 @use "./components/header";
 @use "./components/footer";

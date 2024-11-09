@@ -15,12 +15,27 @@ const Comments: React.FC = () => {
           <div className="section-inner">
             <div className="comments">
               <Swiper
-                slidesPerView={3}
+                slidesPerView={"auto"}
                 spaceBetween={30}
                 modules={[Navigation]}
                 navigation={{
                   prevEl: ".comment-prev",
                   nextEl: ".comment-next",
+                }}
+                breakpoints={{
+                  400: {
+                    slidesPerView: 1,
+                  },
+                  540: {
+                    slidesPerView: 2,
+                  },
+
+                  768: {
+                    slidesPerView: 2,
+                  },
+                  1000: {
+                    slidesPerView: 3,
+                  },
                 }}
               >
                 <SwiperSlide>

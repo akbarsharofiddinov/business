@@ -119,7 +119,7 @@ const ProductDetails: React.FC = () => {
       )}
 
       {modal ? (
-        <MyModal setModal={setModal}>
+        <MyModal modal={modal} setModal={setModal}>
           <form>
             <h4 className="title">Buyurtmani rasmiylashtirish</h4>
             <input type="text" placeholder="Ismingiz" />
