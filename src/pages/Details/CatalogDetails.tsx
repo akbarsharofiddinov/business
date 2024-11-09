@@ -1,16 +1,17 @@
-import { ProductItem, Products } from "@/components";
-import { setProducts } from "@/store/categorySlice/categorySlice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
+import axios from "axios";
+
+import { ProductItem, Products } from "@/components";
+import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
+import { setProducts } from "@/store/productSlice/productSlice";
 
 const CatalogDetails: React.FC = () => {
-  const [stateProducts, setStateProducts] = useState<IProduct[]>([]);
   const [currentCategory, setCurrentCategory] = useState<ICategory>();
-  const { catalogSlug } = useParams();
+  const { catalogSlug, productSlug } = useParams();
 
   const categories = useAppSelector((state) => state.category.categories);
+  const products = useAppSelector((state) => state.product.products);
 
   const dispatch = useAppDispatch();
 
@@ -20,8 +21,7 @@ const CatalogDetails: React.FC = () => {
         `https://bizneskatalog.webclub.uz/api/companies/kushmag/${catalogSlug}`
       );
       if (response.status === 200) {
-        setStateProducts(response.data.data.categories.products);
-        dispatch(setProducts(response.data.data.categories.products));
+        dispatch(setProducts(response.data.products.data));
       }
     } catch (error) {
       console.log(error);
@@ -40,17 +40,19 @@ const CatalogDetails: React.FC = () => {
 
   return (
     <>
-      {currentCategory ? (
+      {productSlug ? (
+        <Outlet />
+      ) : currentCategory ? (
         <div className="section-catalogs catalog-details_page">
           <div className="container">
             <div className="paths">
-              <a href="/">Bosh sahifa</a>
+              <Link to={"/"}>Bosh sahifa</Link>
               <span>/</span>
-              <a href="/catalogs">Katalog</a>
+              <Link to={"/catalogs"}>Katalog</Link>
               <span>/</span>
-              <a href="#" onClick={(e) => e.preventDefault()}>
+              <Link to="#" onClick={(e) => e.preventDefault()}>
                 {currentCategory.name_uz}
-              </a>
+              </Link>
             </div>
 
             <div className="section-inner">
@@ -58,9 +60,9 @@ const CatalogDetails: React.FC = () => {
                 <h3 className="title">{currentCategory.name_uz}</h3>
               </div>
 
-              {stateProducts ? (
+              {products ? (
                 <Products>
-                  {stateProducts.map((product, index) => (
+                  {products.map((product, index) => (
                     <ProductItem data={product} key={index} />
                   ))}
                 </Products>

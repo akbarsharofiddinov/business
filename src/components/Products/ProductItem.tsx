@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
@@ -20,9 +21,9 @@ const ProductItem: React.FC<IProps> = ({ data }) => {
             <p>Narxi:</p>
             <p>{data.price} so‘m</p>
           </div>
-          <a href={`/product-details/${data.id}`} className="product-details">
+          <Link to={`${data.slug}`} className="product-details">
             Batafsil
-          </a>
+          </Link>
         </div>
       </div>
     </>

@@ -1,10 +1,10 @@
 interface IProduct {
-  id: number;
-  company_id: number;
-  category_id: number;
   name_uz: string;
   name_ru: string;
   name_kr: string;
+  description_uz: string;
+  description_ru: string;
+  description_kr: string;
   slug: string;
   price: null;
   unit: null;

@@ -15,22 +15,9 @@ export const categorySlice = createSlice({
     setCategories: (state, { payload }: PayloadAction<ICategory[]>) => {
       state.categories = payload;
     },
-
-    setProducts: (
-      state,
-      { payload }: PayloadAction<{ categoryId: number; products: IProduct[] }>
-    ) => {
-      const filteredCategories = state.categories.filter((category) =>
-        category.id === payload.categoryId
-          ? (category.products = payload.products)
-          : category
-      );
-
-      state.categories = filteredCategories;
-    },
   },
 });
 
-export const { setCategories, setProducts } = categorySlice.actions;
+export const { setCategories } = categorySlice.actions;
 
 export default categorySlice.reducer;

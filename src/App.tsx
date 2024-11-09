@@ -23,8 +23,8 @@ const App: React.FC = () => {
         "https://bizneskatalog.webclub.uz/api/companies/kushmag"
       );
       if (response.status === 200) {
-        dispatch(setCompany(response.data.data));
-        dispatch(setCategories(response.data.data.categories));
+        dispatch(setCompany(response.data.company));
+        dispatch(setCategories(response.data.category));
       }
     } catch (error) {
       console.log(error);
@@ -55,11 +55,17 @@ const App: React.FC = () => {
             {
               path: ":catalogSlug",
               element: <CatalogDetails />,
+              children: [
+                {
+                  path: ":productSlug",
+                  element: <ProductDetails />
+                }
+              ]
             },
           ],
         },
         {
-          path: "product-details/:productId",
+          path: "product-details/:productSlug",
           element: <ProductDetails />,
         },
       ],

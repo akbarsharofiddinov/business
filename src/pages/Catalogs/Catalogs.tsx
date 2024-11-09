@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useAppSelector } from "@/store/hooks/hooks";
 
 const Catalogs: React.FC = () => {
@@ -14,7 +14,8 @@ const Catalogs: React.FC = () => {
         <section className="section-catalogs catalog-page">
           <div className="container">
             <div className="paths">
-              <a href="/">Bosh sahifa</a>/<a href="/catalogs">Katalog</a>
+              <Link to={"/"}>Bosh sahifa</Link>/
+              <Link to={"/catalogs"}>Katalog</Link>
             </div>
 
             <div className="section-inner">
@@ -25,7 +26,8 @@ const Catalogs: React.FC = () => {
                 {categories?.length
                   ? categories.map((category, index) => (
                       <div className="catalog" key={index}>
-                        <a href={`catalogs/${category.slug}`}></a>
+                        {/* <a href={`catalogs/${category.slug}`}></a> */}
+                        <Link to={`${category.slug}`}></Link>
                         <img
                           src={`https://bizneskatalog.webclub.uz/images/categories/${category.photo}`}
                           alt=""
@@ -35,28 +37,6 @@ const Catalogs: React.FC = () => {
                     ))
                   : ""}
               </div>
-              {/* <div className="catalogs">
-                <div className="catalog">
-                  <Link to="catalog-details"></Link>
-                  <img src={catalog} alt="" />
-                  <p className="catalog-name">Ichki eshiklar</p>
-                </div>
-                <div className="catalog">
-                  <Link to="catalog-details"></Link>
-                  <img src={catalog} alt="" />
-                  <p className="catalog-name">Ichki eshiklar</p>
-                </div>
-                <div className="catalog">
-                  <Link to="catalog-details"></Link>
-                  <img src={catalog} alt="" />
-                  <p className="catalog-name">Ichki eshiklar</p>
-                </div>
-                <div className="catalog">
-                  <Link to="catalog-details"></Link>
-                  <img src={catalog} alt="" />
-                  <p className="catalog-name">Ichki eshiklar</p>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

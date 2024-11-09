@@ -12,12 +12,20 @@
 
       img {
         flex: 20% !important;
+        width: 382px !important;
+        height: 382px !important;
+        object-fit: contain;
       }
 
       .info {
         flex: 70% !important;
 
         display: flex;
+        gap: 30px;
+
+        & > p {
+          width: 600px !important;
+        }
 
         .desc {
           flex: 50% !important;
