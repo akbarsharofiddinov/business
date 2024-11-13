@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
+  catalogSlug?: string;
 }
 
-const ProductItem: React.FC<IProps> = ({ data }) => {
+const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
   return (
     <>
       <div className="product-item">
@@ -21,9 +22,18 @@ const ProductItem: React.FC<IProps> = ({ data }) => {
             <p>Narxi:</p>
             <p>{data.price} so‘m</p>
           </div>
-          <Link to={`${data.slug}`} className="product-details">
-            Batafsil
-          </Link>
+          {catalogSlug ? (
+            <a
+              href={`/catalogs/${catalogSlug}/${data.slug}`}
+              className="product-details"
+            >
+              Batafsil
+            </a>
+          ) : (
+            <Link to={`${data.slug}`} className="product-details">
+              Batafsil
+            </Link>
+          )}
         </div>
       </div>
     </>

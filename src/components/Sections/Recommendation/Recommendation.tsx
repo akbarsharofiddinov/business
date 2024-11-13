@@ -9,7 +9,12 @@ import ProductItem from "@/components/Products/ProductItem";
 import axios from "axios";
 
 const Recommendation: React.FC = () => {
-  const [recProducts, setRecProducts] = useState<IProduct[]>([]);
+  const [recProducts, setRecProducts] = useState<
+    {
+      catalogSlug: string;
+      products: IProduct[];
+    }[]
+  >([]);
 
   const categories = useAppSelector((state) => state.category.categories);
 
@@ -21,8 +26,11 @@ const Recommendation: React.FC = () => {
 
       if (response.status === 200) {
         const resProducts: IProduct[] = response.data.products.data;
-        if (resProducts.length)
-          resProducts.map((item) => setRecProducts((prev) => [...prev, item]));
+        if (resProducts.length) {
+          const product = { catalogSlug: catalogSlug, products: resProducts };
+          
+          setRecProducts((prev) => [...prev, product]);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -66,10 +74,12 @@ const Recommendation: React.FC = () => {
           }}
         >
           {recProducts.length
-            ? recProducts.map((product, index) => (
-                <SwiperSlide key={index}>
-                  <ProductItem data={product} />
-                </SwiperSlide>
+            ? recProducts.map((item) => (
+                item.products.map((product, index) => (
+                  <SwiperSlide key={index}>
+                    <ProductItem catalogSlug={item.catalogSlug} data={product} />
+                  </SwiperSlide>
+                ))
               ))
             : ""}
         </Swiper>
