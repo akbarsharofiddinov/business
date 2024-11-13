@@ -28,7 +28,7 @@ const ProductDetails: React.FC = () => {
 
   useEffect(() => {
     getCurrentProduct();
-  }, []);
+  }, [productSlug]);
 
   return (
     <>

@@ -23,12 +23,13 @@ const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
             <p>{data.price} so‘m</p>
           </div>
           {catalogSlug ? (
-            <a
-              href={`/catalogs/${catalogSlug}/${data.slug}`}
+            <Link
+              to={`/catalogs/${catalogSlug}/${data.slug}`}
               className="product-details"
+              onClick={() => window.scrollTo(0, 0)}
             >
               Batafsil
-            </a>
+            </Link>
           ) : (
             <Link to={`${data.slug}`} className="product-details">
               Batafsil
