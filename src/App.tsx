@@ -58,9 +58,9 @@ const App: React.FC = () => {
               children: [
                 {
                   path: ":productSlug",
-                  element: <ProductDetails />
-                }
-              ]
+                  element: <ProductDetails />,
+                },
+              ],
             },
           ],
         },

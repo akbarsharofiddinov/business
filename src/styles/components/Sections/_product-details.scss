@@ -103,6 +103,9 @@
   }
 
   .section-recommendation {
+    .swiper-slide {
+      z-index: -1 !important;
+    }
     .swiper-btns {
       display: flex;
       margin: 40px 0;

@@ -27,6 +27,10 @@ interface ICompany {
   name: string;
   logo: string;
   slug: string;
+  banner_image: string;
+  banner_text_uz: string;
+  banner_text_ru: string;
+  banner_text_kr: string;
   description_uz: string;
   description_kr: string;
   description_ru: string;

@@ -97,29 +97,95 @@
         transform: translateX(0);
       }
 
+      padding-top: 80px !important;
       position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
-      background-color: #fff;
+      left: 0;
+      background-color: #f8f9fd;
       z-index: 50;
       padding: 60px 20px 0 20px;
-      width: 350px !important;
+      width: 100% !important;
       box-shadow: -5px 2px 15px rgba(0, 0, 0, 0.2);
 
       flex-direction: column;
-      align-items: end !important;
 
       transition: transform 0.4s;
 
-      .close-btn {
-        display: block;
+      .contact {
+        display: flex !important;
+        width: 100%;
+        padding: 0 10px !important;
+        gap: 15px !important;
+
+        a {
+          color: #242bc4 !important;
+          font-weight: 700 !important;
+        }
+
+        button {
+          font-size: 16px !important;
+          font-weight: 500 !important;
+        }
+      }
+
+      .social-links {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: #242bc4 !important;
+          font-size: 24px !important;
+          background-color: #fff;
+          padding: 10px 15px;
+          border-radius: 100px;
+
+          span {
+            font-size: 16px !important;
+            color: #333;
+          }
+        }
+      }
+
+      .top {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
         position: absolute;
         top: 15px;
         left: 20px;
-        background-color: transparent;
-        border: none;
-        font-size: 32px;
+        right: 20px;
+
+        img {
+          width: 80%;
+        }
+
+        .close-btn {
+          display: block;
+
+          background-color: transparent;
+          border: none;
+          font-size: 32px;
+        }
+      }
+
+      &_item {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 100px;
+
+        span {
+          display: block !important;
+        }
       }
     }
 
@@ -226,6 +292,30 @@
 
       .statistic-box {
         max-width: 340px !important;
+      }
+    }
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr) !important;
+
+    .product-item {
+      img {
+        width: 167px !important;
+        height: 167px !important;
+      }
+
+      .name {
+        font-size: 14px !important;
+      }
+
+      .price {
+        font-size: 14px !important;
+      }
+
+      .product-details {
+        font-size: 16px !important;
+        background-color: #242bc4 !important;
       }
     }
   }

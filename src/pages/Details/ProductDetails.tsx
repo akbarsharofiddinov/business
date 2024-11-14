@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import { MyModal, Recommendation } from "@/components";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetails: React.FC = () => {
   const [modal, setModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<IProduct>();
-
-  const navigate = useNavigate();
 
   const { catalogSlug, productSlug } = useParams();
 
@@ -40,12 +38,8 @@ const ProductDetails: React.FC = () => {
               <span>/</span>
               <Link to={"/catalogs"}>Katalog</Link>
               <span>/</span>
-              <a
-                href="#"
-                onClick={(e) => {
-                  navigate(-1);
-                  e.preventDefault();
-                }}
+              <Link
+                to={`/catalogs/${catalogSlug}`}
                 style={{
                   backgroundColor: "transparent",
                   border: "none",
@@ -54,7 +48,7 @@ const ProductDetails: React.FC = () => {
                 }}
               >
                 {catalogSlug?.split("-").join(" ")}
-              </a>
+              </Link>
               <span>/</span>
               <a href="#" onClick={(e) => e.preventDefault()}>
                 {currentProduct.name_uz}

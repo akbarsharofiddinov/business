@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IState {
-  compnay: ICompany;
+  company: ICompany;
 }
 
 const initialState: IState = {
-  compnay: {
+  company: {
     id: 0,
     address: "",
     categories: [
@@ -17,9 +17,13 @@ const initialState: IState = {
         name_uz: "",
         photo: "",
         slug: "",
-        products: []
+        products: [],
       },
     ],
+    banner_image: "",
+    banner_text_kr: "",
+    banner_text_ru: "",
+    banner_text_uz: "",
     description_kr: "",
     description_ru: "",
     description_uz: "",
@@ -37,7 +41,7 @@ export const companySlice = createSlice({
   initialState,
   reducers: {
     setCompany: (state, { payload }: PayloadAction<ICompany>) => {
-      state.compnay = payload;
+      state.company = payload;
     },
   },
 });

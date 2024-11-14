@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "react-use-gesture";
@@ -10,6 +10,8 @@ interface IProps {
 }
 
 const Modal: React.FC<IProps> = ({ modal, children, setModal }) => {
+  const [mobileView, setMobileView] = useState(false);
+
   const [{ y }, api] = useSpring(() => ({ y: window.innerHeight }));
 
   const openSheet = () => api.start({ y: 0 });
@@ -38,22 +40,50 @@ const Modal: React.FC<IProps> = ({ modal, children, setModal }) => {
     else closeSheet();
   }, [modal]);
 
+  useEffect(() => {
+    if (window.innerWidth <= 540) {
+      setMobileView(true);
+    } else {
+      setMobileView(false);
+    }
+  }, []);
+
   return (
     <>
-      <animated.div
-        {...bind()}
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-          y,
-          touchAction: "none",
-        }}
-      >
+      {mobileView ? (
+        <animated.div
+          {...bind()}
+          style={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            zIndex: 99,
+            y,
+            touchAction: "none",
+          }}
+        >
+          <div
+            className="modal"
+            onClick={() => {
+              setModal(false);
+            }}
+          >
+            <div className="modal-inner" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="close-modal_btn"
+                onClick={() => setModal(false)}
+              >
+                &times;
+              </button>
+              {children}
+            </div>
+          </div>
+        </animated.div>
+      ) : (
         <div
           className="modal"
           onClick={() => {
@@ -67,7 +97,7 @@ const Modal: React.FC<IProps> = ({ modal, children, setModal }) => {
             {children}
           </div>
         </div>
-      </animated.div>
+      )}
     </>
   );
 };
