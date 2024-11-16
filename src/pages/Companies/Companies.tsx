@@ -1,4 +1,6 @@
 import { MySelect } from "@/components";
+import { setAllCompany } from "@/store/companySlice/companySlice";
+import { useAppDispatch } from "@/store/hooks/hooks";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -8,6 +10,8 @@ import { Link, Outlet, useParams } from "react-router-dom";
 const Companies: React.FC = () => {
   const [companies, setCompanies] = useState<ICompany[]>();
   const { companySlug } = useParams();
+
+  const dispatch = useAppDispatch();
 
   const { t, i18n } = useTranslation();
   const languages: string[] = Object.keys(i18n.options.resources || {});
@@ -20,6 +24,7 @@ const Companies: React.FC = () => {
 
       if (response.status === 200) {
         setCompanies(response.data.companies);
+        dispatch(setAllCompany(response.data.companies));
       }
     } catch (error) {
       console.log(error);

@@ -12,6 +12,55 @@ header {
       align-items: center;
       gap: 15px;
 
+      & > div {
+        position: relative;
+
+        .menu {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+
+          position: absolute;
+          background-color: #fff;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          width: 160px;
+          transform: translateY(-50%);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+
+          z-index: 10;
+
+          transition: transform 0.3s, opacity 0.3s, visibility 0.3s ease;
+
+          li {
+            padding: 7px 14px;
+            text-transform: capitalize;
+            cursor: pointer;
+
+            &:hover {
+              background-color: rgb(232, 232, 232);
+            }
+
+            &.disable {
+              background-color: rgb(232, 232, 232);
+            }
+
+            color: #333 !important;
+            font-size: 16px !important;
+            font-weight: 500;
+          }
+
+          &.active {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+          }
+        }
+      }
+
       img {
         border-radius: 50%;
         width: 60px !important;
@@ -22,6 +71,23 @@ header {
         font-size: 22px;
         font-weight: 600;
         color: #333;
+      }
+
+      button {
+        background-color: transparent;
+        border-radius: 100px;
+        border: none;
+        padding: 3px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: rgb(231, 231, 231);
+        }
       }
     }
 

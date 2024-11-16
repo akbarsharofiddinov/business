@@ -102,6 +102,12 @@
       display: none !important;
     }
 
+    .logo {
+      .menu {
+        right: 0;
+      }
+    }
+
     .header-menu {
       transform: translateX(100%);
       &.active {
@@ -172,15 +178,30 @@
 
       .top {
         display: flex !important;
-        align-items: center;
+        align-items: center !important;
         justify-content: space-between;
         position: absolute;
         top: 15px;
         left: 20px;
         right: 20px;
 
-        img {
-          width: 80%;
+        a {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          img {
+            border-radius: 50%;
+            width: 40px !important;
+            height: 40px !important;
+          }
+
+          span {
+            display: block !important;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+          }
         }
 
         .close-btn {

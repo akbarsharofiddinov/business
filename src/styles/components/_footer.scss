@@ -8,6 +8,24 @@ footer {
     align-items: center;
     gap: 30px;
 
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      img {
+        border-radius: 50%;
+        width: 60px !important;
+        height: 60px !important;
+      }
+
+      span {
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
     .footer-inner {
       width: 100%;
       display: flex;

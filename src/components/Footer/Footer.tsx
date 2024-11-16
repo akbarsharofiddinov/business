@@ -1,15 +1,17 @@
 import React from "react";
 
-import logo from "@/assets/images/logo.jpg";
 import { GoMail } from "react-icons/go";
 import { FiPhone } from "react-icons/fi";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/store/hooks/hooks";
+import { Link, useParams } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+
+  const { companySlug } = useParams();
 
   const { company } = useAppSelector((state) => state.company);
 
@@ -19,9 +21,13 @@ const Footer: React.FC = () => {
     <>
       <footer>
         <div className="container">
-          <a href="/" className="logo">
-            <img src={logo} alt="" />
-          </a>
+          <Link to={`/${companySlug}`} className="logo">
+            <img
+              src={`https://bizneskatalog.webclub.uz/images/company-logo/${company.logo}`}
+              alt=""
+            />
+            <span>{company.name}</span>
+          </Link>
           <div className="footer-inner">
             <div className="social-links">
               <div className="row row-1">

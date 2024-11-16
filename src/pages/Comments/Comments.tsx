@@ -1,9 +1,10 @@
 import React from "react";
+import { Comments as SectionComments } from "@/components";
 
 const Comments: React.FC = () => {
   return (
     <>
-      <div>Comments</div>
+      <SectionComments />
     </>
   );
 };

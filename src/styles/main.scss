@@ -21,7 +21,9 @@
 @use "./UI/modal";
 @use "./UI/select";
 
+// Page
 @use "./pages/companies";
+@use "./pages/about";
 
 .paths {
   display: flex;

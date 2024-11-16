@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import logo from "@/assets/images/logo.jpg";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaBars, FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
 import { GoArrowUpRight } from "react-icons/go";
 import { AiFillInstagram } from "react-icons/ai";
@@ -9,13 +8,17 @@ import { MySelect } from "@/components";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/store/hooks/hooks";
 import { CiGlobe } from "react-icons/ci";
+import { TbArrowsExchange } from "react-icons/tb";
 
 const Headet: React.FC = () => {
   const [headerMenu, setHeaderMenu] = useState(false);
+  const [changeCompany, setChangeCompany] = useState(false);
 
   const { t, i18n } = useTranslation();
-  const { company } = useAppSelector((state) => state.company);
+  const { company, allCompanies } = useAppSelector((state) => state.company);
   const { companySlug } = useParams();
+
+  const navigate = useNavigate();
 
   const telephones = [...company.telephones];
 
@@ -32,6 +35,24 @@ const Headet: React.FC = () => {
                 alt="logo image"
               />
               <span>{company.name}</span>
+              <div>
+                <button onClick={() => setChangeCompany(true)}>
+                  <TbArrowsExchange />
+                </button>
+                <div className={changeCompany ? "menu active" : "menu"}>
+                  {allCompanies.map((item, index) => (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        navigate(`/${item.slug}`);
+                        setChangeCompany(false);
+                      }}
+                    >
+                      {item.name}
+                    </li>
+                  ))}
+                </div>
+              </div>
             </Link>
             <div className={headerMenu ? "header-menu active" : "header-menu"}>
               <NavLink
@@ -66,7 +87,11 @@ const Headet: React.FC = () => {
               </NavLink>
               <div className="top">
                 <Link to={"/"}>
-                  <img src={logo} alt="" />
+                  <img
+                    src={`https://bizneskatalog.webclub.uz/images/company-logo/${company.logo}`}
+                    alt=""
+                  />
+                  <span>{company.name}</span>
                 </Link>
                 <button
                   className="close-btn"

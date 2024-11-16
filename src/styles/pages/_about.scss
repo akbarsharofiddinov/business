@@ -1,0 +1,22 @@
+.about-page {
+  padding: 40px 0;
+  .inner {
+    display: flex;
+    gap: 40px;
+
+    img {
+      width: 450px;
+      height: 450px;
+    }
+
+    .info {
+      p {
+        &:first-child {
+          font-size: 24px;
+          font-weight: 500;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
