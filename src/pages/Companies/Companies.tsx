@@ -33,7 +33,7 @@ const Companies: React.FC = () => {
   return (
     <>
       {!companySlug ? (
-        <div className="companies">
+        <div className="companies-page">
           <div className="inner">
             <div className="top">
               <h3 className="title">{t("choose-company")}</h3>
@@ -43,14 +43,12 @@ const Companies: React.FC = () => {
                 afterIcon={<FaAngleDown />}
               />
             </div>
-            <div className="comapnies">
+            <div className="companies">
               {companies?.length
                 ? companies.map((company, index) => (
-                    <>
-                      <Link to={`/${company.slug}`} key={index}>
-                        {company.name}
-                      </Link>
-                    </>
+                    <Link to={`/${company.slug}`} key={index}>
+                      {company.name}
+                    </Link>
                   ))
                 : ""}
             </div>

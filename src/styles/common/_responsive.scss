@@ -437,6 +437,36 @@
       }
     }
   }
+
+  .companies-page {
+    .inner {
+      max-width: 380px !important;
+      padding: 15px;
+
+      .title {
+        font-size: 16px !important;
+      }
+
+      .select-item {
+        font-size: 14px !important;
+        span {
+          font-size: 14px !important;
+        }
+
+        .menu {
+          right: 0;
+        }
+      }
+    }
+    .companies {
+      max-width: 360px !important;
+      max-height: 300px !important;
+
+      a {
+        font-size: 14px !important;
+      }
+    }
+  }
 }
 
 .header-bar_btn {
