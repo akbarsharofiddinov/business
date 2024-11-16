@@ -14,7 +14,7 @@ const resources = {
 
 i18next.use(initReactI18next).init({
   resources,
-  lng: "ru",
+  lng: "uz",
   fallbackLng: "uz",
   interpolation: {
     escapeValue: false,

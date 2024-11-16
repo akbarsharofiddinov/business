@@ -10,7 +10,7 @@ const ProductDetails: React.FC = () => {
   const [modal, setModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<IProduct>();
 
-  const { catalogSlug, productSlug } = useParams();
+  const { catalogSlug, productSlug, companySlug } = useParams();
 
   async function getCurrentProduct() {
     try {
@@ -53,12 +53,14 @@ const ProductDetails: React.FC = () => {
         <section className="section-product-details">
           <div className="container">
             <div className="paths">
-              <Link to={"/"}>{t("paths.home-page")}</Link>
+              <Link to={`/${companySlug}`}>{t("paths.home-page")}</Link>
               <span>/</span>
-              <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
+              <Link to={`/${companySlug}/catalogs`}>
+                {t("header_menu.catalog")}
+              </Link>
               <span>/</span>
               <Link
-                to={`/catalogs/${catalogSlug}`}
+                to={`/${companySlug}/catalogs/${catalogSlug}`}
                 style={{
                   backgroundColor: "transparent",
                   border: "none",
@@ -146,7 +148,7 @@ const ProductDetails: React.FC = () => {
               placeholder={t("sections.footer-contact.name")}
             />
             <input type="text" placeholder="+998 00 000 00 00" />
-            <button>{t('modal-form.button')}</button>
+            <button>{t("modal-form.button")}</button>
           </form>
         </MyModal>
       ) : (

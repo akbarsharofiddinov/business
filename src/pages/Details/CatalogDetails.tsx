@@ -58,7 +58,9 @@ const CatalogDetails: React.FC = () => {
             <div className="paths">
               <Link to={`/${companySlug}`}>{t("paths.home-page")}</Link>
               <span>/</span>
-              <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
+              <Link to={`/${companySlug}/catalogs`}>
+                {t("header_menu.catalog")}
+              </Link>
               <span>/</span>
               <Link to="#" onClick={(e) => e.preventDefault()}>
                 {getCategoryName(currentCategory, currentLang)}

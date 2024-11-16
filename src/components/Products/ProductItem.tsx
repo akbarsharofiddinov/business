@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
@@ -10,6 +10,7 @@ interface IProps {
 const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
+  const { companySlug } = useParams();
 
   const getProductName = (product: IProduct, lang: string) => {
     const nameKey = `name_${lang}` as keyof IProduct;
@@ -37,7 +38,7 @@ const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
           </div>
           {catalogSlug ? (
             <Link
-              to={`/catalogs/${catalogSlug}/${data.slug}`}
+              to={`/${companySlug}/catalogs/${catalogSlug}/${data.slug}`}
               className="product-details"
               onClick={() => window.scrollTo(0, 0)}
             >

@@ -21,7 +21,7 @@ const Banner: React.FC = () => {
               />
               <div className="banner-inner">
                 <h3 className="title">{company.banner_text_uz}</h3>
-                <Link to={"/about"}>{t("button.more-btn")}</Link>
+                <Link to={"about"}>{t("button.more-btn")}</Link>
               </div>
             </div>
           </div>
