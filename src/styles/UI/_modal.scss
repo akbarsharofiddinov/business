@@ -46,6 +46,20 @@
         text-align: center;
       }
 
+      .phone {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        span {
+          background-color: #fff;
+          border-radius: 100px 0 0 100px;
+          padding: 15px;
+          font-size: 20px;
+          border-right: 1px solid #ddd;
+        }
+      }
+
       input {
         background-color: #fff;
         border: none;
@@ -54,6 +68,10 @@
         font-size: 20px;
         width: 100%;
         box-shadow: 4px 10px 15px rgba(0, 0, 0, 0.04);
+
+        &:last-child {
+          border-radius: 0 100px 100px 0 !important;
+        }
 
         &::placeholder {
           color: #787996;

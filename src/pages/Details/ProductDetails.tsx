@@ -9,8 +9,13 @@ import { useAppSelector } from "@/store/hooks/hooks";
 const ProductDetails: React.FC = () => {
   const [modal, setModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<IProduct>();
+  const [buyerName, setBuyerName] = useState("");
+  const [buyerNumber, setBuyerNumber] = useState("");
 
   const { catalogSlug, productSlug, companySlug } = useParams();
+
+  const { categories } = useAppSelector((state) => state.category);
+  const { company, allCompanies } = useAppSelector((state) => state.company);
 
   async function getCurrentProduct() {
     try {
@@ -26,8 +31,6 @@ const ProductDetails: React.FC = () => {
     }
   }
 
-  const { categories } = useAppSelector((state) => state.category);
-
   function getCurrentCategoryLang(lang: string) {
     const foundCategory = categories.find(
       (category) => category.slug === catalogSlug
@@ -36,6 +39,57 @@ const ProductDetails: React.FC = () => {
     if (foundCategory) {
       const nameKey = `name_${lang}` as keyof ICategory;
       return foundCategory[nameKey] as string;
+    }
+  }
+
+  function getCurrentCategoryId(categorySlug: string) {
+    const foundCategory = categories.find((item) => item.slug === categorySlug);
+    return foundCategory?.id;
+  }
+
+  function getCompanyID(companySlug: string) {
+    const foundCompany = allCompanies.find((item) => item.slug === companySlug);
+
+    return foundCompany?.id;
+  }
+
+  async function handleOrderProduct() {
+    const categoryId = getCurrentCategoryId(catalogSlug + "");
+    const companyId = getCompanyID(companySlug + "");
+
+    if (
+      categoryId &&
+      companyId &&
+      buyerName &&
+      buyerNumber &&
+      currentProduct?.id
+    ) {
+      try {
+        const response = await axios.post(
+          `https://bizneskatalog.webclub.uz/api/clients?company_id=${companyId}&
+          category_id=${categoryId}&
+          product_id=${currentProduct.id}&
+          name=${buyerName}&
+          phone=${buyerNumber}
+          `
+        );
+
+        if (response.status === 200) {
+          setModal(false);
+          setBuyerName("");
+          setBuyerNumber("");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log(
+        categoryId,
+        company.id,
+        buyerName,
+        buyerNumber,
+        currentProduct?.id
+      );
     }
   }
 
@@ -117,14 +171,16 @@ const ProductDetails: React.FC = () => {
                       </p>
                       <p>{t("ordering-info.based-order")}</p>
                     </div>
-                    <div className="count-box">
+                    {/* <div className="count-box">
                       <button>-</button>
                       <span className="count">1</span>
                       <button>+</button>
-                    </div>
+                    </div> */}
                     <button
                       className="order-btn"
-                      onClick={() => setModal(true)}
+                      onClick={() => {
+                        setModal(true);
+                      }}
                     >
                       {t("button.order-btn")}
                     </button>
@@ -145,10 +201,30 @@ const ProductDetails: React.FC = () => {
             <h4 className="title">{t("modal-form.title")}</h4>
             <input
               type="text"
+              value={buyerName}
+              onChange={(e) => setBuyerName(e.target.value)}
               placeholder={t("sections.footer-contact.name")}
+              required
             />
-            <input type="text" placeholder="+998 00 000 00 00" />
-            <button>{t("modal-form.button")}</button>
+
+            <div className="phone">
+              <span>+998</span>
+              <input
+                type="text"
+                value={buyerNumber}
+                onChange={(e) => setBuyerNumber(e.target.value)}
+                placeholder="00 000 00 00"
+                required
+              />
+            </div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleOrderProduct();
+              }}
+            >
+              {t("modal-form.button")}
+            </button>
           </form>
         </MyModal>
       ) : (

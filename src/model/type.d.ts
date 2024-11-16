@@ -1,4 +1,5 @@
 interface IProduct {
+  id: number;
   name_uz: string;
   name_ru: string;
   name_kr: string;
