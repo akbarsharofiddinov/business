@@ -34,19 +34,31 @@ const Headet: React.FC = () => {
               <span>{company.name}</span>
             </Link>
             <div className={headerMenu ? "header-menu active" : "header-menu"}>
-              <NavLink to={"catalogs"} className="header-menu_item">
+              <NavLink
+                to={"catalogs"}
+                className="header-menu_item"
+                onClick={() => setHeaderMenu(false)}
+              >
                 {t("header_menu.catalog")}
                 <span>
                   <GoArrowUpRight />
                 </span>
               </NavLink>
-              <NavLink to={"comments"} className="header-menu_item">
+              <NavLink
+                to={"comments"}
+                className="header-menu_item"
+                onClick={() => setHeaderMenu(false)}
+              >
                 {t("header_menu.comments")}
                 <span>
                   <GoArrowUpRight />
                 </span>
               </NavLink>
-              <NavLink to={"about"} className="header-menu_item">
+              <NavLink
+                to={"about"}
+                className="header-menu_item"
+                onClick={() => setHeaderMenu(false)}
+              >
                 {t("header_menu.about_company")}
                 <span>
                   <GoArrowUpRight />

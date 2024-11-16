@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const CatalogDetails: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<ICategory>();
-  const { catalogSlug, productSlug } = useParams();
+  const { catalogSlug, productSlug, companySlug } = useParams();
 
   const categories = useAppSelector((state) => state.category.categories);
   const products = useAppSelector((state) => state.product.products);
@@ -56,7 +56,7 @@ const CatalogDetails: React.FC = () => {
         <div className="section-catalogs catalog-details_page">
           <div className="container">
             <div className="paths">
-              <Link to={"/"}>{t("paths.home-page")}</Link>
+              <Link to={`/${companySlug}`}>{t("paths.home-page")}</Link>
               <span>/</span>
               <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
               <span>/</span>

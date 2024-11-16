@@ -5,7 +5,7 @@ import { useAppSelector } from "@/store/hooks/hooks";
 import { useTranslation } from "react-i18next";
 
 const Catalogs: React.FC = () => {
-  const { catalogSlug } = useParams();
+  const { catalogSlug, companySlug } = useParams();
 
   const categories = useAppSelector((state) => state.category.categories);
 
@@ -28,7 +28,7 @@ const Catalogs: React.FC = () => {
         <section className="section-catalogs catalog-page">
           <div className="container">
             <div className="paths">
-              <Link to={"/"}>{t("paths.home-page")}</Link>/
+              <Link to={`/${companySlug}`}>{t("paths.home-page")}</Link>/
               <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
             </div>
 
