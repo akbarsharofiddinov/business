@@ -6,6 +6,7 @@ import {
   CatalogDetails,
   Catalogs,
   Comments,
+  Companies,
   Home,
   ProductDetails,
 } from "@/pages";
@@ -34,39 +35,45 @@ const App: React.FC = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: <Companies />,
       children: [
         {
-          path: "",
-          element: <Home />,
-        },
-        {
-          path: "comments",
-          element: <Comments />,
-        },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "catalogs",
-          element: <Catalogs />,
+          path: ":companySlug",
+          element: <Layout />,
           children: [
             {
-              path: ":catalogSlug",
-              element: <CatalogDetails />,
+              path: "",
+              element: <Home />,
+            },
+            {
+              path: "comments",
+              element: <Comments />,
+            },
+            {
+              path: "about",
+              element: <About />,
+            },
+            {
+              path: "catalogs",
+              element: <Catalogs />,
               children: [
                 {
-                  path: ":productSlug",
-                  element: <ProductDetails />,
+                  path: ":catalogSlug",
+                  element: <CatalogDetails />,
+                  children: [
+                    {
+                      path: ":productSlug",
+                      element: <ProductDetails />,
+                    },
+                  ],
                 },
               ],
             },
+            {
+              path: "product-details/:productSlug",
+              element: <ProductDetails />,
+            },
           ],
-        },
-        {
-          path: "product-details/:productSlug",
-          element: <ProductDetails />,
         },
       ],
     },

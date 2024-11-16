@@ -6,9 +6,15 @@ import { FiPhone } from "react-icons/fi";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "@/store/hooks/hooks";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+
+  const { company } = useAppSelector((state) => state.company);
+
+  const telephones = [...company.telephones];
+
   return (
     <>
       <footer>
@@ -23,11 +29,23 @@ const Footer: React.FC = () => {
                   <GoMail /> Testmail@gmail.com
                 </a>
               </div>
-              <div className="row row-2">
-                <a href="#">
-                  <FiPhone /> +998 77 777-77-77
-                </a>
-              </div>
+              {telephones.length
+                ? telephones.map((tel, index) =>
+                    tel ? (
+                      <div className={`row row-${index}`} key={index}>
+                        <a href="#">
+                          <FiPhone />{" "}
+                          {`+998 ${tel}`.replace(
+                            /(\d{2})(\d{3})(\d{2})(\d{2})/,
+                            "$1 $2 $3 $4"
+                          )}
+                        </a>
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  )
+                : ""}
               <div className="row row-3">
                 <a href="#">
                   <AiFillInstagram />

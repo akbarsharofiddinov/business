@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { CiGlobe } from "react-icons/ci";
 
 interface IProps {
   current: string;
   list: string[];
+  afterIcon?: React.ReactNode;
+  beforeIcon?: React.ReactNode;
 }
 
-const MySelect: React.FC<IProps> = ({ current, list }) => {
+const MySelect: React.FC<IProps> = ({
+  current,
+  list,
+  beforeIcon,
+  afterIcon,
+}) => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   const { i18n } = useTranslation();
 
   const languageNames: Record<string, string> = {
@@ -23,18 +31,22 @@ const MySelect: React.FC<IProps> = ({ current, list }) => {
   return (
     <>
       <div className="select-item">
-        <div className="selected">
-          <span>
-            <CiGlobe />
+        <div className="selected" onClick={() => setOpenMenu((prev) => !prev)}>
+          <span>{beforeIcon && beforeIcon}</span>
+          <h3 className="select-title">{current}</h3>
+          <span className={openMenu ? "rotate" : ""}>
+            {afterIcon && afterIcon}
           </span>
-          <h3 className="title">{current}</h3>
         </div>
-        <ul className="menu">
+        <ul className={openMenu ? "menu active" : "menu"}>
           {list.map((lang, index) => (
             <li
               key={index}
               className={lang === i18n.language ? "disable" : ""}
-              onClick={() => changeLanguage(lang)}
+              onClick={() => {
+                changeLanguage(lang);
+                setOpenMenu(false);
+              }}
             >
               {languageNames[lang]}
             </li>

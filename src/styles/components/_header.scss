@@ -56,6 +56,12 @@ header {
       align-items: center;
       gap: 30px;
 
+      .select-item {
+        .selected span {
+          font-size: 24px !important;
+        }
+      }
+
       .contact {
         display: flex;
         flex-direction: column;

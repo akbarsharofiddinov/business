@@ -8,24 +8,31 @@
     text-transform: capitalize;
     cursor: pointer;
 
-    .title {
+    .select-title {
       font-weight: 500;
     }
 
     span {
-      font-size: 24px;
+      font-size: 18px;
       display: grid;
       place-items: center;
+
+      transition: transform 0.2s;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
     }
   }
 
   .menu {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     position: absolute;
     background-color: #fff;
-    border: 1px solid #ddd;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 160px;
     transform: translateY(-50%);
@@ -50,10 +57,8 @@
         background-color: rgb(232, 232, 232);
       }
     }
-  }
 
-  &:hover {
-    .menu {
+    &.active {
       transform: translateX(0);
       opacity: 1;
       visibility: visible;

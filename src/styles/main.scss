@@ -21,6 +21,8 @@
 @use "./UI/modal";
 @use "./UI/select";
 
+@use "./pages/companies";
+
 .paths {
   display: flex;
   align-items: center;
