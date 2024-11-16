@@ -1,0 +1,65 @@
+{
+  "header_menu": {
+    "catalog": "Katalog",
+    "comments": "Fikrlar",
+    "about_company": "Kompaniya haqida"
+  },
+
+  "button": {
+    "header-contact": "Biz bilan bog'lanish",
+    "more-btn": "Batafsil",
+    "comment-btn": "Sharh qoldirish",
+    "send": "Yuborish",
+    "order-btn": "Buyurtma berish",
+    "order-process": "Rasmiylashtirish"
+  },
+
+  "sections": {
+    "statistics": {
+      "title": "Biz sifatli mahsulotlarni arzon narxlarda taklif qilamiz va<br /><span> mijozlarimiz hayotini yaxshilashga intilamiz.</span>",
+      "box1": "30,000 dan ortiq xaridorlar",
+      "box2": "Bozorda 15 yillik barqaror savdo"
+    },
+
+    "comments": {
+      "title": "Mijozlarni biz haqimizda fikrlari"
+    },
+
+    "gallery": {
+      "title": "Galereya"
+    },
+
+    "footer-contact": {
+      "name": "Ismingiz",
+      "textarea": "Qisqacha habaringiz"
+    },
+
+    "product-details": {
+      "price": "Narxi",
+      "sum": "so'm"
+    },
+
+    "recommendation": {
+      "title": "Мы рекомендуем"
+    }
+  },
+
+  "paths": {
+    "home-page": "Bosh sahifa"
+  },
+
+  "filter-box": {
+    "result": "Natija",
+    "quantity": "ta",
+    "filter": "Saralash"
+  },
+
+  "oredering-info": {
+    "available": "Sotuvda mavjud",
+    "based-order": "Buyurtma asosida"
+  },
+
+  "modal-form": {
+    "title": "Buyurtmani rasmiylashtirish"
+  }
+}

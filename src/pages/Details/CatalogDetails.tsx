@@ -5,6 +5,7 @@ import axios from "axios";
 import { ProductItem, Products } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 import { setProducts } from "@/store/productSlice/productSlice";
+import { useTranslation } from "react-i18next";
 
 const CatalogDetails: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<ICategory>();
@@ -28,6 +29,15 @@ const CatalogDetails: React.FC = () => {
     }
   }
 
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
+
+  function getCategoryName(category: ICategory, language: string) {
+    const nameKey = `name_${language}` as keyof ICategory;
+    return category[nameKey] as string;
+  }
+
   useEffect(() => {
     if (categories.length) {
       const foundCategory = categories.find(
@@ -46,18 +56,20 @@ const CatalogDetails: React.FC = () => {
         <div className="section-catalogs catalog-details_page">
           <div className="container">
             <div className="paths">
-              <Link to={"/"}>Bosh sahifa</Link>
+              <Link to={"/"}>{t("paths.home-page")}</Link>
               <span>/</span>
-              <Link to={"/catalogs"}>Katalog</Link>
+              <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
               <span>/</span>
               <Link to="#" onClick={(e) => e.preventDefault()}>
-                {currentCategory.name_uz}
+                {getCategoryName(currentCategory, currentLang)}
               </Link>
             </div>
 
             <div className="section-inner">
               <div className="section-title">
-                <h3 className="title">{currentCategory.name_uz}</h3>
+                <h3 className="title">
+                  {getCategoryName(currentCategory, currentLang)}
+                </h3>
               </div>
 
               {products ? (

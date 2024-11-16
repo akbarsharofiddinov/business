@@ -7,6 +7,24 @@ header {
     align-items: center;
     justify-content: space-between;
 
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      img {
+        border-radius: 50%;
+        width: 60px !important;
+        height: 60px !important;
+      }
+
+      span {
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
     .header-menu {
       display: flex;
       align-items: center;
@@ -33,19 +51,25 @@ header {
       }
     }
 
-    .contact {
+    .right {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      align-items: center;
+      gap: 30px;
 
-      &-btn {
-        background-color: #787996;
-        color: #fff;
-        border-radius: 100px;
-        padding: 8px 10px;
-        border: none;
-        font-size: 12px;
-        font-weight: 500;
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        &-btn {
+          background-color: #787996;
+          color: #fff;
+          border-radius: 100px;
+          padding: 8px 10px;
+          border: none;
+          font-size: 12px;
+          font-weight: 500;
+        }
       }
     }
   }

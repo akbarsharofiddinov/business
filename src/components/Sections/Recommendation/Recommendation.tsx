@@ -7,6 +7,7 @@ import { useAppSelector } from "@/store/hooks/hooks";
 import ProductItem from "@/components/Products/ProductItem";
 
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Recommendation: React.FC = () => {
   const [recProducts, setRecProducts] = useState<
@@ -28,7 +29,7 @@ const Recommendation: React.FC = () => {
         const resProducts: IProduct[] = response.data.products.data;
         if (resProducts.length) {
           const product = { catalogSlug: catalogSlug, products: resProducts };
-          
+
           setRecProducts((prev) => [...prev, product]);
         }
       }
@@ -36,6 +37,8 @@ const Recommendation: React.FC = () => {
       console.log(error);
     }
   }
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (categories.length) {
@@ -49,7 +52,7 @@ const Recommendation: React.FC = () => {
     <section className="section-recommendation">
       <div className="container">
         <div className="section-title">
-          <h3 className="title">Tavsiya qilamiz</h3>
+          <h3 className="title">{t("sections.recommendation.title")}</h3>
         </div>
         <Swiper
           breakpoints={{
@@ -74,13 +77,16 @@ const Recommendation: React.FC = () => {
           }}
         >
           {recProducts.length
-            ? recProducts.map((item) => (
+            ? recProducts.map((item) =>
                 item.products.map((product, index) => (
                   <SwiperSlide key={index}>
-                    <ProductItem catalogSlug={item.catalogSlug} data={product} />
+                    <ProductItem
+                      catalogSlug={item.catalogSlug}
+                      data={product}
+                    />
                   </SwiperSlide>
                 ))
-              ))
+              )
             : ""}
         </Swiper>
         <div className="swiper-btns">

@@ -1,15 +1,17 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const Comments: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <section className="section-comments">
         <div className="container">
           <div className="section-title">
-            <h3 className="title">Mijozlarni biz haqimizda fikrlari</h3>
+            <h3 className="title">{t("sections.comments.title")}</h3>
           </div>
 
           <div className="section-inner">
@@ -204,7 +206,9 @@ const Comments: React.FC = () => {
                     <HiArrowRight />
                   </button>
                 </div>
-                <button className="comment-btn">Sharh qoldirish</button>
+                <button className="comment-btn">
+                  {t("button.comment-btn")}
+                </button>
               </div>
             </div>
           </div>

@@ -1,15 +1,19 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Statistics: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <section className="section-statistics">
         <div className="container">
           <div className="top">
             <h3 className="title">
-              Biz sifatli mahsulotlarni arzon narxlarda taklif qilamiz va
-              <br />
-              <span> mijozlarimiz hayotini yaxshilashga intilamiz.</span>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: t("sections.statistics.title"),
+                }}
+              />
             </h3>
           </div>
           <div className="statistic-boxes">
@@ -50,7 +54,7 @@ const Statistics: React.FC = () => {
                 />
               </svg>
 
-              <p>30,000 dan ortiq xaridorlar</p>
+              <p>{t("sections.statistics.box1")}</p>
             </div>
             <div className="statistic-box">
               <svg
@@ -88,7 +92,7 @@ const Statistics: React.FC = () => {
                 />
               </svg>
 
-              <p>Bozorda 15 yillik barqaror savdo</p>
+              <p>{t("sections.statistics.box2")}</p>
             </div>
           </div>
         </div>

@@ -4,14 +4,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import gallery from "@/assets/images/gallery.png";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 import { Navigation } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 const Gallery: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <section className="section-gallery">
         <div className="container">
           <div className="section-title">
-            <h3 className="title">Galereya</h3>
+            <h3 className="title">{t("sections.gallery.title")}</h3>
           </div>
           <div className="section-inner">
             <Swiper

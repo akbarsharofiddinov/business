@@ -14,3 +14,4 @@ export { default as Recommendation } from "./Sections/Recommendation/Recommendat
 
 // UI
 export { default as MyModal } from "./UI/Modal";
+export { default as MySelect } from "./UI/MySelect";

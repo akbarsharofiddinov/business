@@ -1,0 +1,65 @@
+{
+  "header_menu": {
+    "catalog": "Каталог",
+    "comments": "Комментарии",
+    "about_company": "О компании"
+  },
+
+  "button": {
+    "header-contact": "Связаться с нами",
+    "more-btn": "Подробнее",
+    "comment-btn": "Оставить комментарий",
+    "send": "Отправить",
+    "order-btn": "Заказать"
+  },
+
+  "sections": {
+    "statistics": {
+      "title": "Мы предлагаем качественную продукцию по доступным ценам и<br /><span> мы стремимся улучшить жизнь наших клиентов.</span>",
+      "box1": "Более 30 000 клиентов",
+      "box2": "15 лет стабильной торговли на рынке"
+    },
+
+    "comments": {
+      "title": "Что о нас думают клиенты"
+    },
+
+    "gallery": {
+      "title": "Галерея"
+    },
+
+    "footer-contact": {
+      "name": "Ваше имя",
+      "textarea": "Краткое сообщение"
+    },
+
+    "product-details": {
+      "price": "Цена",
+      "sum": "сум"
+    },
+
+    "recommendation": {
+      "title": "Мы рекомендуем"
+    }
+  },
+
+  "paths": {
+    "home-page": "Главная страница"
+  },
+
+  "filter-box": {
+    "result": "Результат",
+    "quantity": "шт",
+    "filter": "Сортировка"
+  },
+
+  "ordering-info": {
+    "available": "Доступно для продажи",
+    "based-order": "На основании заказа"
+  },
+
+  "modal-form": {
+    "title": "Оформление",
+    "button": "Оформить заказ"
+  }
+}

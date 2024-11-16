@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { MyModal, Recommendation } from "@/components";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+import { useAppSelector } from "@/store/hooks/hooks";
 
 const ProductDetails: React.FC = () => {
   const [modal, setModal] = useState(false);
@@ -24,6 +26,23 @@ const ProductDetails: React.FC = () => {
     }
   }
 
+  const { categories } = useAppSelector((state) => state.category);
+
+  function getCurrentCategoryLang(lang: string) {
+    const foundCategory = categories.find(
+      (category) => category.slug === catalogSlug
+    );
+
+    if (foundCategory) {
+      const nameKey = `name_${lang}` as keyof ICategory;
+      return foundCategory[nameKey] as string;
+    }
+  }
+
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
+
   useEffect(() => {
     getCurrentProduct();
   }, [productSlug]);
@@ -34,9 +53,9 @@ const ProductDetails: React.FC = () => {
         <section className="section-product-details">
           <div className="container">
             <div className="paths">
-              <Link to={"/"}>Bosh sahifa</Link>
+              <Link to={"/"}>{t("paths.home-page")}</Link>
               <span>/</span>
-              <Link to={"/catalogs"}>Katalog</Link>
+              <Link to={"/catalogs"}>{t("header_menu.catalog")}</Link>
               <span>/</span>
               <Link
                 to={`/catalogs/${catalogSlug}`}
@@ -47,7 +66,7 @@ const ProductDetails: React.FC = () => {
                   fontSize: 16,
                 }}
               >
-                {catalogSlug?.split("-").join(" ")}
+                {getCurrentCategoryLang(currentLang)?.split("-").join(" ")}
               </Link>
               <span>/</span>
               <a href="#" onClick={(e) => e.preventDefault()}>
@@ -67,7 +86,10 @@ const ProductDetails: React.FC = () => {
                 <div className="info">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: currentProduct.description_uz,
+                      __html:
+                        currentProduct[
+                          `description_${currentLang}` as keyof IProduct
+                        ]!,
                     }}
                   />
                   <div className="ordering_and_price">
@@ -84,11 +106,14 @@ const ProductDetails: React.FC = () => {
                           fill="#242BC4"
                         />
                       </svg>
-                      Sotuvda mavjud
+                      {t("ordering-info.available")}
                     </p>
                     <div className="price-tag">
-                      <p>Narxi: {currentProduct.price}</p>
-                      <p>Buyurtma asosida</p>
+                      <p>
+                        {t("sections.product-details.price")}:{" "}
+                        {currentProduct.price}
+                      </p>
+                      <p>{t("ordering-info.based-order")}</p>
                     </div>
                     <div className="count-box">
                       <button>-</button>
@@ -99,7 +124,7 @@ const ProductDetails: React.FC = () => {
                       className="order-btn"
                       onClick={() => setModal(true)}
                     >
-                      Buyurtma berish
+                      {t("button.order-btn")}
                     </button>
                   </div>
                 </div>
@@ -115,10 +140,13 @@ const ProductDetails: React.FC = () => {
       {modal ? (
         <MyModal modal={modal} setModal={setModal}>
           <form>
-            <h4 className="title">Buyurtmani rasmiylashtirish</h4>
-            <input type="text" placeholder="Ismingiz" />
+            <h4 className="title">{t("modal-form.title")}</h4>
+            <input
+              type="text"
+              placeholder={t("sections.footer-contact.name")}
+            />
             <input type="text" placeholder="+998 00 000 00 00" />
-            <button>Rasmiylashtirish</button>
+            <button>{t('modal-form.button')}</button>
           </form>
         </MyModal>
       ) : (

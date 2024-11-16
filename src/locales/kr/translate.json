@@ -1,0 +1,64 @@
+{
+  "header_menu": {
+    "catalog": "Katalog",
+    "comments": "Pikirler",
+    "about_company": "Kompaniya haqqında"
+  },
+
+  "button": {
+    "header-contact": "Biz menen baylanısıw",
+    "more-btn": "Tolıq",
+    "comment-btn": "Túsindiriw qaldırıw",
+    "send": "Jıberiw",
+    "order-btn": "Buyırtpa beriw"
+  },
+
+  "sections": {
+    "statistics": {
+      "title": "Biz arzan bahalarda sapalı ónimlerdi usınıs etemiz hám<br /><span>  biz klientlerimizdiń ómirin jaqsılawǵa ıntılamız.</span>",
+      "box1": "30 000 den artıq klientler",
+      "box2": "Bazardaǵı turaqlı sawdanıń 15 jıllıǵı"
+    },
+
+    "comments": {
+      "title": "Klientler biz haqqımızda qanday pikirde"
+    },
+
+    "gallery": {
+      "title": "Galereya"
+    },
+
+    "footer-contact": {
+      "name": "Atıńız",
+      "textarea": "Qısqa xabar"
+    },
+
+    "product-details": {
+      "price": "Bahası",
+      "sum": "swm"
+    },
+
+    "recommendation": {
+      "title": "Usınıs etemiz"
+    }
+  },
+
+  "paths": {
+    "home-page": "Bas bet"
+  },
+
+  "filter-box": {
+    "result": "Nátiyjeler",
+    "quantity": "ta",
+    "filter": "Sortirovka"
+  },
+
+  "ordering-info": {
+    "available": "Satıw ushın bar",
+    "based-order": "Buyırtpa tiykarında"
+  },
+
+  "modal-form": {
+    "title": "Buyırtpanı rásmiylestiriw"
+  }
+}

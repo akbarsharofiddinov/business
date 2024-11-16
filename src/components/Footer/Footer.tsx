@@ -5,8 +5,10 @@ import { GoMail } from "react-icons/go";
 import { FiPhone } from "react-icons/fi";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <footer>
@@ -42,10 +44,15 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <form className="contact">
-              <input type="text" placeholder="Ismingiz" />
+              <input
+                type="text"
+                placeholder={`${t("sections.footer-contact.name")}`}
+              />
               <input type="text" placeholder="+998900000000" />
-              <textarea placeholder="Qisqacha habaringiz"></textarea>
-              <button>Yuborish</button>
+              <textarea
+                placeholder={`${t("sections.footer-contact.textarea")}`}
+              ></textarea>
+              <button>{t("button.send")}</button>
             </form>
           </div>
         </div>

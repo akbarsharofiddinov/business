@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 interface IProps {
@@ -7,6 +8,14 @@ interface IProps {
 }
 
 const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+
+  const getProductName = (product: IProduct, lang: string) => {
+    const nameKey = `name_${lang}` as keyof IProduct;
+    return product[nameKey] as string;
+  };
+
   return (
     <>
       <div className="product-item">
@@ -17,10 +26,14 @@ const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
           />
         </div>
         <div className="body">
-          <p className="name">{data.name_uz.slice(0, 30) + "..."}</p>
+          <p className="name">
+            {getProductName(data, currentLang).slice(0, 30) + "..."}
+          </p>
           <div className="price">
-            <p>Narxi:</p>
-            <p>{data.price} so‘m</p>
+            <p>{t("sections.product-details.price")}:</p>
+            <p>
+              {data.price} {t("sections.product-details.sum")}
+            </p>
           </div>
           {catalogSlug ? (
             <Link
@@ -28,11 +41,11 @@ const ProductItem: React.FC<IProps> = ({ data, catalogSlug }) => {
               className="product-details"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Batafsil
+              {t("button.more-btn")}
             </Link>
           ) : (
             <Link to={`${data.slug}`} className="product-details">
-              Batafsil
+              {t("button.more-btn")}
             </Link>
           )}
         </div>

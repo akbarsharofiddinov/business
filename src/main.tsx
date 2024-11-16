@@ -5,6 +5,8 @@ import "swiper/swiper-bundle.css";
 import { Provider } from "react-redux";
 import { store } from "@/store";
 
+import "./i18next";
+
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <App />
