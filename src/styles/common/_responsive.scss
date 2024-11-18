@@ -287,6 +287,16 @@
       }
     }
   }
+
+  .about-page {
+    .inner {
+      img {
+        width: 360px !important;
+        height: 400px !important;
+      }
+      flex-direction: column !important;
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {
