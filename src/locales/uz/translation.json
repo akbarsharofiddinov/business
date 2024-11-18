@@ -40,7 +40,7 @@
     },
 
     "recommendation": {
-      "title": "Мы рекомендуем"
+      "title": "Tavsiya qilamiz"
     }
   },
 
@@ -60,9 +60,16 @@
   },
 
   "modal-form": {
-    "title": "Buyurtmani rasmiylashtirish"
+    "title": "Buyurtmani rasmiylashtirish",
+    "button": "Rasmiylashtirish"
   },
 
   "choose-company": "Kompaniyalar ro'yxatidan birini tanlang",
-  "company-name": "Kompaniya nomi"
+  "company-name": "Kompaniya nomi",
+
+  "toast-titles": {
+    "order-success": "Buyurtma muvofaqqiyatli rasmiylashtirildi",
+    "order-failed": "Buyurtmani rasmiylashtirishda xato yuz berdi",
+    "order-warning": "Iltimos buyurtma berishda ma'lumotlaringizni to'liq yozing"
+  }
 }

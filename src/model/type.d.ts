@@ -38,6 +38,8 @@ interface ICompany {
   telephones: string;
   telegram: string;
   instagram: string;
+  youtube: string;
+  facebook: string;
   address: string;
   categories: ICategory[];
 }

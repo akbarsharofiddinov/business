@@ -14,6 +14,7 @@ import axios from "axios";
 import { useAppDispatch } from "./store/hooks/hooks";
 import { setCompany } from "@/store/companySlice/companySlice";
 import { setCategories } from "./store/categorySlice/categorySlice";
+import { ToastContainer } from "react-toastify";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -86,6 +87,7 @@ const App: React.FC = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer />
     </>
   );
 };

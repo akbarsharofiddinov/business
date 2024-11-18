@@ -50,6 +50,13 @@
         display: flex;
         align-items: center;
         width: 100%;
+        border-radius: 100px;
+
+        &.error {
+          border: 2px solid red;
+        }
+
+        transition: border 0.4s;
 
         span {
           background-color: #fff;
@@ -68,6 +75,12 @@
         font-size: 20px;
         width: 100%;
         box-shadow: 4px 10px 15px rgba(0, 0, 0, 0.04);
+
+        transition: border-width 0.3s ease;
+
+        &.error {
+          border: 2px solid red;
+        }
 
         &:last-child {
           border-radius: 0 100px 100px 0 !important;

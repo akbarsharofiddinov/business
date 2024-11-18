@@ -29,6 +29,8 @@ const initialState: IState = {
     description_ru: "",
     description_uz: "",
     instagram: "",
+    youtube: "",
+    facebook: "",
     logo: "",
     name: "",
     slug: "",

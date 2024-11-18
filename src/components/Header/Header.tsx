@@ -24,6 +24,12 @@ const Headet: React.FC = () => {
 
   const languages: string[] = Object.keys(i18n.options.resources || {});
 
+  window.addEventListener("click", () => {
+    if (changeCompany) {
+      setChangeCompany(false);
+    }
+  });
+
   return (
     <>
       <header>
@@ -36,7 +42,13 @@ const Headet: React.FC = () => {
               />
               <span>{company.name}</span>
               <div>
-                <button onClick={() => setChangeCompany(true)}>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setChangeCompany((prev) => !prev);
+                  }}
+                >
                   <TbArrowsExchange />
                 </button>
                 <div className={changeCompany ? "menu active" : "menu"}>

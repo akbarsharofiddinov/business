@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store";
 
 import "./i18next";
+import "react-toastify/ReactToastify.css";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>

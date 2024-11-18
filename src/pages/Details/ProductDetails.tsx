@@ -5,17 +5,62 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/store/hooks/hooks";
+import { toast } from "react-toastify";
 
 const ProductDetails: React.FC = () => {
   const [modal, setModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<IProduct>();
+
   const [buyerName, setBuyerName] = useState("");
+  const [nameValidate, setNameValidate] = useState(false);
   const [buyerNumber, setBuyerNumber] = useState("");
+  const [numberValidate, setNumberValidate] = useState(false);
+
+  function handleInputValidation(e: React.ChangeEvent<HTMLInputElement>) {
+    const element = e.target;
+
+    if (element.name === "name") {
+      setBuyerName(element.value);
+      if (element.value.length === 0) setNameValidate(true);
+      else setNameValidate(false);
+    } else if (element.name === "number") {
+      let value = element.value.replace(/\D/g, "");
+
+      // Format the value into "XX XXX XX XX"
+      value = value.replace(
+        /(\d{2})(\d{3})?(\d{2})?(\d{2})?/,
+        function (_, p1, p2, p3, p4) {
+          return [p1, p2, p3, p4].filter(Boolean).join(" ");
+        }
+      );
+
+      element.value = value;
+
+      setBuyerNumber(element.value);
+      if (element.value.length < 9) setNumberValidate(true);
+      else setNumberValidate(false);
+    }
+  }
 
   const { catalogSlug, productSlug, companySlug } = useParams();
 
   const { categories } = useAppSelector((state) => state.category);
-  const { company, allCompanies } = useAppSelector((state) => state.company);
+  const { allCompanies } = useAppSelector((state) => state.company);
+
+  const orderSuccess = () =>
+    toast(t("toast-titles.order-success"), {
+      type: "success",
+    });
+
+  const orderFailed = () =>
+    toast(t("toast-titles.order-failed"), {
+      type: "error",
+    });
+
+  const orderWarning = () =>
+    toast(t("toast-titles.order-warning"), {
+      type: "warning",
+    });
 
   async function getCurrentProduct() {
     try {
@@ -56,7 +101,6 @@ const ProductDetails: React.FC = () => {
   async function handleOrderProduct() {
     const categoryId = getCurrentCategoryId(catalogSlug + "");
     const companyId = getCompanyID(companySlug + "");
-
     if (
       categoryId &&
       companyId &&
@@ -73,23 +117,18 @@ const ProductDetails: React.FC = () => {
           phone=${buyerNumber}
           `
         );
-
         if (response.status === 200) {
           setModal(false);
           setBuyerName("");
           setBuyerNumber("");
+          orderSuccess();
         }
       } catch (error) {
         console.log(error);
+        orderFailed();
       }
     } else {
-      console.log(
-        categoryId,
-        company.id,
-        buyerName,
-        buyerNumber,
-        currentProduct?.id
-      );
+      orderWarning();
     }
   }
 
@@ -202,17 +241,20 @@ const ProductDetails: React.FC = () => {
             <input
               type="text"
               value={buyerName}
-              onChange={(e) => setBuyerName(e.target.value)}
+              name="name"
+              className={nameValidate ? "error" : ""}
+              onChange={(e) => handleInputValidation(e)}
               placeholder={t("sections.footer-contact.name")}
               required
             />
 
-            <div className="phone">
+            <div className={numberValidate ? "phone error" : "phone"}>
               <span>+998</span>
               <input
                 type="text"
                 value={buyerNumber}
-                onChange={(e) => setBuyerNumber(e.target.value)}
+                name="number"
+                onChange={(e) => handleInputValidation(e)}
                 placeholder="00 000 00 00"
                 required
               />

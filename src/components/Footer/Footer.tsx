@@ -1,6 +1,5 @@
 import React from "react";
 
-import { GoMail } from "react-icons/go";
 import { FiPhone } from "react-icons/fi";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
@@ -30,11 +29,6 @@ const Footer: React.FC = () => {
           </Link>
           <div className="footer-inner">
             <div className="social-links">
-              <div className="row row-1">
-                <a href="#">
-                  <GoMail /> Testmail@gmail.com
-                </a>
-              </div>
               {telephones.length
                 ? telephones.map((tel, index) =>
                     tel ? (
@@ -53,18 +47,34 @@ const Footer: React.FC = () => {
                   )
                 : ""}
               <div className="row row-3">
-                <a href="#">
-                  <AiFillInstagram />
-                </a>
-                <a href="#">
-                  <FaYoutube />
-                </a>
-                <a href="#">
-                  <FaTelegram />
-                </a>
-                <a href="#">
-                  <FaFacebook />
-                </a>
+                {company.instagram ? (
+                  <a href={company.instagram}>
+                    <AiFillInstagram />
+                  </a>
+                ) : (
+                  ""
+                )}
+                {company.youtube ? (
+                  <a href={company.youtube}>
+                    <FaYoutube />
+                  </a>
+                ) : (
+                  ""
+                )}
+                {company.telegram ? (
+                  <a href={company.telegram}>
+                    <FaTelegram />
+                  </a>
+                ) : (
+                  ""
+                )}
+                {company.facebook ? (
+                  <a href={company.facebook}>
+                    <FaFacebook />
+                  </a>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <form className="contact">
