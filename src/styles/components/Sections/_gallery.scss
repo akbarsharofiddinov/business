@@ -9,10 +9,17 @@
 
       &:hover {
         max-width: 382px !important;
+
+        img {
+          width: 100%;
+        }
       }
 
       img {
         height: 330px;
+        width: 100%;
+
+        transition: width 0.3s ease;
       }
     }
   }

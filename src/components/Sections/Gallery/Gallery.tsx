@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import gallery from "@/assets/images/gallery.png";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 import { Navigation } from "swiper/modules";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
+import axios from "axios";
+import { setAllProducts } from "@/store/productSlice/productSlice";
 
 const Gallery: React.FC = () => {
   const { t } = useTranslation();
+
+  const dispatch = useAppDispatch();
+
+  const allProducts = useAppSelector((state) => state.product.allProducts);
+  const categories = useAppSelector((state) => state.category.categories);
+
+  async function getProducts(categorySlug: string) {
+    try {
+      const response = await axios.get(
+        `https://bizneskatalog.webclub.uz/api/companies/kushmag/${categorySlug}`
+      );
+      if (response.status === 200) {
+        dispatch(setAllProducts(response.data.products.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    categories.map((category) => {
+      getProducts(category.slug);
+    });
+  }, [categories.length]);
+
   return (
     <>
       <section className="section-gallery">
@@ -25,36 +52,16 @@ const Gallery: React.FC = () => {
                 nextEl: ".gallery-next",
               }}
             >
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={gallery} alt="" />
-              </SwiperSlide>
+              {allProducts.length
+                ? allProducts.map((product, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        src={`https://bizneskatalog.webclub.uz/images/products/${product.photos[0]}`}
+                        alt=""
+                      />
+                    </SwiperSlide>
+                  ))
+                : ""}
             </Swiper>
 
             <div className="swiper-btns">

@@ -7,7 +7,12 @@ import { useTranslation } from "react-i18next";
 const Banner: React.FC = () => {
   const { company } = useAppSelector((state) => state.company);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const getBannerTitle = (lang: string) => {
+    const nameKey = `banner_text_${lang}` as keyof ICompany;
+    return company[nameKey] as string;
+  };
 
   return (
     <>
@@ -20,7 +25,7 @@ const Banner: React.FC = () => {
                 alt=""
               />
               <div className="banner-inner">
-                <h3 className="title">{company.banner_text_uz}</h3>
+                <h3 className="title">{getBannerTitle(i18n.language)}</h3>
                 <Link to={"about"}>{t("button.more-btn")}</Link>
               </div>
             </div>
