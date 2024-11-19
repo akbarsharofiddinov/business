@@ -19,7 +19,7 @@ export const productSlice = createSlice({
     },
 
     setAllProducts: (state, { payload }: PayloadAction<IProduct[]>) => {
-      state.allProducts = payload;
+      state.allProducts = state.allProducts.concat(payload);
     },
   },
 });

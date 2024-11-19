@@ -22,7 +22,8 @@ const Gallery: React.FC = () => {
         `https://bizneskatalog.webclub.uz/api/companies/kushmag/${categorySlug}`
       );
       if (response.status === 200) {
-        dispatch(setAllProducts(response.data.products.data));
+        const data = response.data.products.data;
+        dispatch(setAllProducts(data));
       }
     } catch (error) {
       console.log(error);
