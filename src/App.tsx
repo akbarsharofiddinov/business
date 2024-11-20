@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "@/components";
 import {
@@ -10,29 +10,10 @@ import {
   Home,
   ProductDetails,
 } from "@/pages";
-import axios from "axios";
-import { useAppDispatch } from "./store/hooks/hooks";
-import { setCompany } from "@/store/companySlice/companySlice";
-import { setCategories } from "./store/categorySlice/categorySlice";
+
 import { ToastContainer } from "react-toastify";
 
 const App: React.FC = () => {
-  const dispatch = useAppDispatch();
-
-  async function getCompany() {
-    try {
-      const response = await axios.get(
-        "https://bizneskatalog.webclub.uz/api/companies/kushmag"
-      );
-      if (response.status === 200) {
-        dispatch(setCompany(response.data.company));
-        dispatch(setCategories(response.data.category));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -79,10 +60,6 @@ const App: React.FC = () => {
       ],
     },
   ]);
-
-  useEffect(() => {
-    getCompany();
-  }, []);
 
   return (
     <>
