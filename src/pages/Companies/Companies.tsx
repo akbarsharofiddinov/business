@@ -22,6 +22,8 @@ const Companies: React.FC = () => {
         "https://bizneskatalog.webclub.uz/api/companies"
       );
 
+      console.log(response.data);
+
       if (response.status === 200) {
         setCompanies(response.data.companies);
         dispatch(setAllCompany(response.data.companies));
@@ -52,6 +54,10 @@ const Companies: React.FC = () => {
               {companies?.length
                 ? companies.map((company, index) => (
                     <Link to={`/${company.slug}`} key={index}>
+                      <img
+                        src={`https://bizneskatalog.webclub.uz/images/company-logo/${company.logo}`}
+                        alt="logo image"
+                      />
                       {company.name}
                     </Link>
                   ))

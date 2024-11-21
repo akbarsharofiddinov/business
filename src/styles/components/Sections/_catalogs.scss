@@ -44,7 +44,7 @@
     .catalogs {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 30px;
       margin: 40px 0;
 
       .catalog {
@@ -55,6 +55,7 @@
         flex-direction: column;
         gap: 20px;
         border-radius: 20px;
+        width: 100%;
         position: relative;
 
         box-shadow: 4px 10px 15px rgba(0, 0, 0, 0.05);
@@ -70,7 +71,7 @@
         img {
           width: 305px !important;
           height: 305px !important;
-          object-fit: contain;
+          object-fit: cover;
         }
 
         .catalog-name {
