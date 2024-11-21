@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { FaBars, FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa6";
 import { GoArrowUpRight } from "react-icons/go";
 import { AiFillInstagram } from "react-icons/ai";
@@ -17,8 +17,6 @@ const Headet: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { company, allCompanies } = useAppSelector((state) => state.company);
   const { companySlug } = useParams();
-
-  const navigate = useNavigate();
 
   const telephones = [...company.telephones];
 
@@ -53,15 +51,15 @@ const Headet: React.FC = () => {
                 </button>
                 <div className={changeCompany ? "menu active" : "menu"}>
                   {allCompanies.map((item, index) => (
-                    <li
+                    <a
+                      href={item.slug}
                       key={index}
-                      onClick={() => {
-                        navigate(`/${item.slug}`);
-                        setChangeCompany(false);
+                      onClick={(e) => {
+                        e.stopPropagation();
                       }}
                     >
                       {item.name}
-                    </li>
+                    </a>
                   ))}
                 </div>
               </div>

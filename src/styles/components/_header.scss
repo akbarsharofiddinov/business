@@ -13,7 +13,7 @@ header {
       gap: 15px;
 
       & > div {
-        position: relative;
+        z-index: 99 !important;
 
         .menu {
           display: flex;
@@ -24,17 +24,19 @@ header {
           background-color: #fff;
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
           border-radius: 10px;
-          width: 160px;
           transform: translateY(-50%);
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
+          max-width: 260px;
+          min-width: 140px;
+          width: auto;
 
           z-index: 10;
 
           transition: transform 0.3s, opacity 0.3s, visibility 0.3s ease;
 
-          li {
+          a {
             padding: 7px 14px;
             text-transform: capitalize;
             cursor: pointer;

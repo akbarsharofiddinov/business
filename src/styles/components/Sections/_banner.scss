@@ -4,6 +4,13 @@
   .inner {
     position: relative;
 
+    img {
+      width: 100%;
+      height: 800px !important;
+      object-fit: cover;
+      object-position: center;
+    }
+
     &::after {
       content: "";
       position: absolute;
