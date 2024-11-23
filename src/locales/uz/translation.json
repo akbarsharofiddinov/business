@@ -71,5 +71,7 @@
     "order-success": "Buyurtma muvofaqqiyatli rasmiylashtirildi",
     "order-failed": "Buyurtmani rasmiylashtirishda xato yuz berdi",
     "order-warning": "Iltimos buyurtma berishda ma'lumotlaringizni to'liq yozing"
-  }
+  },
+
+  "no-comments": "Kommentariyalar yo'q"
 }

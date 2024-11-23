@@ -23,6 +23,12 @@ interface ICategory {
   products: IProduct[];
 }
 
+interface IFeedback {
+  id: number;
+  name: string;
+  text: string;
+}
+
 interface ICompany {
   id: number;
   name: string;

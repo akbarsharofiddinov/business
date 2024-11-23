@@ -3,24 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface IState {
   company: ICompany;
   allCompanies: ICompany[];
+  feedback: IFeedback[];
 }
 
 const initialState: IState = {
   company: {
     id: 0,
     address: "",
-    categories: [
-      {
-        company_id: 0,
-        id: 0,
-        name_kr: "",
-        name_ru: "",
-        name_uz: "",
-        photo: "",
-        slug: "",
-        products: [],
-      },
-    ],
+    categories: [],
     banner_image: "",
     banner_text_kr: "",
     banner_text_ru: "",
@@ -38,6 +28,7 @@ const initialState: IState = {
     telephones: "",
   },
   allCompanies: [],
+  feedback: [],
 };
 
 export const companySlice = createSlice({
@@ -51,9 +42,13 @@ export const companySlice = createSlice({
     setAllCompany: (state, { payload }: PayloadAction<ICompany[]>) => {
       state.allCompanies = payload;
     },
+
+    setFeedback: (state, { payload }: PayloadAction<IFeedback[]>) => {
+      state.feedback = payload;
+    },
   },
 });
 
-export const { setCompany, setAllCompany } = companySlice.actions;
+export const { setCompany, setAllCompany, setFeedback } = companySlice.actions;
 
 export default companySlice.reducer;
