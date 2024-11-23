@@ -52,7 +52,7 @@ const Headet: React.FC = () => {
                 <div className={changeCompany ? "menu active" : "menu"}>
                   {allCompanies.map((item, index) => (
                     <a
-                      href={item.slug}
+                      href={`/${item.slug}`}
                       key={index}
                       onClick={(e) => {
                         e.stopPropagation();

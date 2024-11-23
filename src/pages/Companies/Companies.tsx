@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaAngleDown } from "react-icons/fa6";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 
 const Companies: React.FC = () => {
   const [companies, setCompanies] = useState<ICompany[]>();
@@ -21,8 +21,6 @@ const Companies: React.FC = () => {
       const response = await axios.get(
         "https://bizneskatalog.webclub.uz/api/companies"
       );
-
-      console.log(response.data);
 
       if (response.status === 200) {
         setCompanies(response.data.companies);
@@ -53,13 +51,13 @@ const Companies: React.FC = () => {
             <div className="companies">
               {companies?.length
                 ? companies.map((company, index) => (
-                    <Link to={`/${company.slug}`} key={index}>
+                    <NavLink to={`/${company.slug}`} key={index}>
                       <img
                         src={`https://bizneskatalog.webclub.uz/images/company-logo/${company.logo}`}
                         alt="logo image"
                       />
                       {company.name}
-                    </Link>
+                    </NavLink>
                   ))
                 : ""}
             </div>
