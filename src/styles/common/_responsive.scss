@@ -300,6 +300,13 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  footer {
+    .social-links {
+      flex-direction: column !important;
+    }
+  }
+
   .container {
     max-width: 360px !important;
   }
